@@ -1,7 +1,7 @@
 import 'dart:math';
 
 abstract class Shape {
-  num get area;//猜测：属性自动生成...
+  num get area;//定义一个没有method body 的 abstract method。子类必须实现。
 
   factory Shape(String type){ //使用factory关键字，对应main中的3
     if (type == 'circle') return Circle(2);
