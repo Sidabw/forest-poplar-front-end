@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'gp-regist.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,9 +20,12 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 80.0), //空位符
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
+                Image.asset(
+                  'assets/sidabw.png',
+                  height: 58.0,
+                  width: 58.0,),
                 SizedBox(height: 16.0),
-                Text('SIDABW'),
+                Text('SIDABW', style: TextStyle(fontSize: 14.0,),),
               ],
             ),
             SizedBox(height: 120.0),
@@ -48,24 +52,27 @@ class _LoginPageState extends State<LoginPage> {
             ButtonBar(
               children: <Widget>[
                 FlatButton(
-                  child: Text('CANCEL'),
+                  child: Text('注册'),
                   onPressed: (){
                     _usernameController.clear();
                     _passwordController.clear();
+                    Navigator.of(context).push(
+                      new MaterialPageRoute<void>( // 路由新页面
+                        builder: (BuildContext context) {
+                          return new RegistPage();
+                        },
+                      ),
+                    );
                   },
                 ),
                 RaisedButton(
-                  child: Text('NEXT'),
+                  child: Text('登录'),
                   onPressed: (){
                     Navigator.pop(context);
                   },
                 )
               ],
             )
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add button bar (101)
           ],
         ),
       ),
