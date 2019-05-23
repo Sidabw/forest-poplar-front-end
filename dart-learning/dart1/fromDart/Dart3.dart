@@ -46,6 +46,7 @@ method4(){
   print((a as int).floor());  //as 类似强转
   var b = null;
   b ??= 'a';  //b 为null时进行赋值操作
+  var c = b ?? 11; // bb为空时返回11
   print(b);
   print('--------------------');
 }
