@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'dart:math';
+import 'gp-regist-phone-verify.dart';
+import 'gp-regist-phone-verify2.dart';
 
 class RegistPage extends StatefulWidget {
   @override
@@ -10,8 +12,8 @@ class RegistPage extends StatefulWidget {
 }
 
 class _RegistPageState extends State<RegistPage> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _phoneNumController = TextEditingController();
+  final _ImgCodeController = TextEditingController();
   final List<Image> aa = List<Image>();
   Image verifyimg =  Image.asset(
                             'assets/sidabw.png',
@@ -40,7 +42,7 @@ class _RegistPageState extends State<RegistPage> {
             Column(
               children: <Widget>[
                 TextField(
-                  controller: _usernameController,
+                  controller: _phoneNumController,
                   decoration: InputDecoration(
                     filled: true,//filled 指该文本框的背景将被一个浅色填充，以助于用户分辨出点击或触摸区域
                     labelText: '手机号📱',
@@ -54,7 +56,7 @@ class _RegistPageState extends State<RegistPage> {
               children: <Widget>[
                 Expanded(
                   child: TextField(
-                    controller: _usernameController,
+                    controller: _ImgCodeController,
                     decoration: InputDecoration(
                       filled: true,//filled 指该文本框的背景将被一个浅色填充，以助于用户分辨出点击或触摸区域
                       labelText: '图形验证码',
@@ -87,7 +89,15 @@ class _RegistPageState extends State<RegistPage> {
                 RaisedButton(
                   child: Text('获取手机验证码'),
                   onPressed: (){
-
+//                    print(_phoneNumController.text);
+//                    print(_ImgCodeController.text);
+                    Navigator.of(context).push(
+                      new MaterialPageRoute<void>( // 路由新页面
+                        builder: (BuildContext context) {
+                          return new RegistVerifyPage2();
+                        },
+                      ),
+                    );
                   },
                 )
               ],
