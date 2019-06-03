@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'dart:math';
+import 'gp-map-home.dart';
 import 'gp-regist-phone-verify.dart';
 import 'gp-regist-phone-verify2.dart';
 
@@ -94,7 +95,7 @@ class _RegistPageDetailState extends State<RegistDetailPage> {
                         Navigator.of(context).push(
                           new MaterialPageRoute<void>( // 路由新页面
                             builder: (BuildContext context) {
-                              return new RegistVerifyPage2();
+                              return new MaphomePage();
                             },
                           ),
                         );
