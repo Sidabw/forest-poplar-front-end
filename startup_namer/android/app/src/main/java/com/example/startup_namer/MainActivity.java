@@ -4,11 +4,17 @@ import android.Manifest;
 import android.app.FragmentManager;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.CoordType;
@@ -76,11 +82,18 @@ public class MainActivity extends FlutterActivity {
     //显示卫星地图
     baiduMapOptions.mapType(BaiduMap.MAP_TYPE_NORMAL);
     //设置缩放级别
-    MapStatus mapStatus = new MapStatus.Builder().zoom(18.0f).build();
-    baiduMapOptions.mapStatus(mapStatus);
+//    MapStatus mapStatus = new MapStatus.Builder().zoom(18.0f).build();
+//    baiduMapOptions.mapStatus(mapStatus);
     mMapView = new MapView(this, baiduMapOptions);
     mBaiduMap = mMapView.getMap();
     mBaiduMap.setMyLocationEnabled(true);
+
+    //切换初始定位到上海
+//    LatLng GEO_SHANGHAI = new LatLng(31.227, 121.481);
+//    MapStatusUpdate status2 = MapStatusUpdateFactory.newLatLng(GEO_SHANGHAI);
+//    mBaiduMap.setMapStatus(status2);
+    setContentView(mMapView);
+
 
     //定位初始化
     mLocationClient = new LocationClient(this);
@@ -97,7 +110,6 @@ public class MainActivity extends FlutterActivity {
     //开启地图定位图层
     mLocationClient.start();
     System.out.println("method onCreate end");
-    setContentView(mMapView);
 
   }
   @Override
@@ -143,3 +155,4 @@ public class MainActivity extends FlutterActivity {
     }
   }
 }
+
